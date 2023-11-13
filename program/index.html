@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+        }
+        .ball{
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="ball"></div>
+    </div>
+
+    <script>
+        let box = document.querySelector('.box');
+        let ball = document.querySelector('.ball');
+
+        let physics = {
+            x: 10,
+            y: 10,
+            gravity: 0.1,
+            vx: Math.random()*7,
+            vy: 0
+        }
+
+        function moveball(){
+            physics.vy += physics.gravity;
+            physics.y += physics.vy;
+            physics.x += physics.vx;
+            
+            if(physics.y+ball.offsetHeight >= box.offsetHeight){
+                physics.y = box.offsetHeight-ball.offsetHeight;
+                physics.vy = -physics.vy*0.8;
+            }
+
+            if(physics.x+ball.offsetWidth >= box.offsetWidth){
+                physics.vx = -physics.vx;
+            }
+
+            if(physics.x <= 0){
+                physics.vx = -physics.vx;
+            }
+
+            ball.style.top = physics.y+'px';
+            ball.style.left = physics.x+'px';
+        }
+
+        function simulate(){
+            moveball();
+            requestAnimationFrame(simulate);
+        }
+
+        simulate();
+    </script>
+</body>
+</html>
