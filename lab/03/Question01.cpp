@@ -52,8 +52,6 @@ public:
     void setInkStatus(bool inkStatus) {
         this->inkStatus = inkStatus;
     }
-
-    // Method to write
     void write() {
         if (inkStatus) {
             cout << "Writing..." << endl;
@@ -61,8 +59,6 @@ public:
             cout << "The ink has run out. Please refill the marker." << endl;
         }
     }
-
-    // Method to refill the marker
     void refill() {
         if (refillable) {
             cout << "Refilling the marker..." << endl;
@@ -74,7 +70,6 @@ public:
 };
 
 int main() {
-    // Example usage
     BoardMarker marker("Dollar", "black", true, true);
 
     cout << "Brand: " << marker.getBrand() << endl;
@@ -82,13 +77,13 @@ int main() {
     cout << "Refillable: " << marker.isRefillable() << endl;
     cout << "Ink Status: " << marker.hasInk() << endl;
 
-    marker.write();  // Writes because ink status is true
+    marker.write();  
 
     marker.setInkStatus(false);
-    marker.write();  // Prints a message indicating ink has run out
+    marker.write(); 
 
-    marker.refill();  // Refills the marker
-    marker.write();  // Writes again after refilling
+    marker.refill();  
+    marker.write();  
 
     return 0;
 }
