@@ -1,3 +1,7 @@
+/* programer: Talha Rusman
+   Roll-Number: 23k-0065
+   Date: 3/3/2024
+*/
 #include <iostream>
 #include <iomanip>
 #include <vector>
